@@ -1,0 +1,11 @@
+typing_extensions
+pydantic
+flask-pydantic-api[serializer]
+werkzeug
+flask-openapi3
+flask-cors
+google-auth
+google-cloud-storage
+google-generativeai
+logging
+psycopg2
