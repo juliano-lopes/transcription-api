@@ -46,22 +46,31 @@ class GenAi:
     files = [
       #self.upload_to_gemini(file, mime_type="audio/wav"),
     ]
-    signed_url = blob.generate_signed_url(3600)
-    data = blob.download_as_string()
-    print(f"url assinada: {signed_url}")
-    chat_session = model.start_chat(
+    #signed_url = blob.generate_signed_url(3600)
+    #data = blob.download_as_string()
+    name = blob.name
+    name = f"{name.split("/").pop()}.wav"
+    print("o nome foi ", name)
+    print(blob)
+    with open(name, "wb") as f:
+      blob.download_to_file(f)
+      file = self.upload_to_gemini(name, mime_type="audio/wav")
+    #print(f"url assinada: {signed_url}")
+    """chat_session = model.start_chat(
       history=[
         {
           "role": "user",
           "parts": [
-            {
-              "mime_type": "audio/wav",  # Specify audio format
-              "data": data,  # Use the generated signed URL for access
-            }
+            file,
+            #{
+              #"mime_type": "audio/wav",  # Specify audio format
+              #"data": data,  # Use the generated signed URL for access
+            #}
           ],
         },
       ]
-    )
+    )"""
+    
     prompt = f"""
     transcreva o audio conforme as orientações a seguir:
     1. a transcrição deve estar no idioma {audio_language}.
@@ -74,7 +83,9 @@ class GenAi:
     t --$ tc --$ td.\n
     """
 
-    response = chat_session.send_message(prompt)
+    #response = chat_session.send_message(prompt)
+    response = model.generate_content([file, prompt])
+    
     #response = chat_session.send_message("transcreva o audio conforme o seguinte: a transcrição deve estar em português brasileiro. Indique no início de cada frase, o tempo exato, convertido em segundos, que cada frase começa no áudio. Considere o final de uma frase quando for encontrado o sinal de ponto '.'. Separe os segundos da frase utilizando o sinal --$,  Por exemplo: 1 --$ Agradeço pela gentileza.\n 5 --$ Meu nome é Juliano.\n")
     print("resposta: ")
 
