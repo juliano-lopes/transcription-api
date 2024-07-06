@@ -41,12 +41,13 @@ async def transcribe_audio_AI(form: TranscriptionAISchema):
         trans_service = TransService(auth, form.uri, form.audio_language, form.translation_language)
         print("chamando serviço de transcrição")
         transcripted_words = trans_service.transcribe_with_gemini()
+        print("dados: ", transcripted_words)
         transcription = Transcription(transcripted_words)
         print("Iniciando retorno de uma transcrição")
-        print(transcription.get_transcription())
+        #print(transcription.get_transcription())
         return transcription.get_transcription()
     except Exception as e:
         # caso um erro fora do previsto
         error_msg = f"Não foi possível transcrever o audio ({form.uri}):\n{e}"
-        logger.warning(f"Erro ao transcrever audio. {error_msg}")
+        logger.warning(f"{error_msg}")
         return {"message": error_msg}, 400

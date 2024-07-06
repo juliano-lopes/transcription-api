@@ -18,6 +18,7 @@ class TranscriptionPhraseSchema(BaseModel):
     time: str = Field("", description="Timestamp de quando a frase começa em um áudio")
     original_phrase: str = Field("", description="Frase no idioma original")
     translated_phrase: str = Field("", description="Frase traduzida")
+    voice_timbre: str = Field("", description="Indica se o timbre da voz que fala a frase é m (masculino), f (feminino) ou i (indefinido).")
 
 class TranscriptionViewSchema(BaseModel):
     """ define como uma transcrição cerá retornada

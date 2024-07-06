@@ -16,5 +16,4 @@ class TransService:
         
         blob = self.auth.get_bucket().blob(file_name)
         print(f"chamando GenAi com blob do arquivo {file_name}")
-        
         return genai.transcribe(blob, self.audio_language, self.translation_language)
