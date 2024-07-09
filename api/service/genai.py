@@ -10,6 +10,7 @@ https://ai.google.dev/gemini-api/docs/get-started/python
 import json
 import os
 import base64
+import time
 import google.generativeai as genai
 class GenAi:
   def __init__(self):
@@ -32,6 +33,28 @@ class GenAi:
     file = genai.upload_file(path, mime_type=mime_type)
     #print(f"Uploaded file '{file.display_name}' as: {file.uri}")
     return file
+
+  def wait_for_files_active(self, files):
+    """Waits for the given files to be active.
+
+    Some files uploaded to the Gemini API need to be processed before they can be
+    used as prompt inputs. The status can be seen by querying the file's "state"
+    field.
+
+    This implementation uses a simple blocking polling loop. Production code
+  should probably employ a more sophisticated approach.
+  """
+    print("Waiting for file processing...")
+    for name in (file.name for file in files):
+      file = genai.get_file(name)
+      while file.state.name == "PROCESSING":
+        print(".", end="", flush=True)
+        time.sleep(10)
+        file = genai.get_file(name)
+      if file.state.name != "ACTIVE":
+        raise Exception(f"File {file.name} failed to process")
+    print("...all files ready")
+    print()
 
   def transcribe(self, blob, audio_language, translation_language):
     
