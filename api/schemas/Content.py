@@ -5,9 +5,9 @@ import werkzeug
 class TranscriptionAISchema(BaseModel):
     """ define como uma transcrição cerá recebida e traduzida
     """
-    uri: str = Field("gs://resourse.wav", description="URL de um áudio armazenado na GCP")
-    audio_language: str = Field("Português", description="Idioma de origem do áudio")
-    translation_language: str = Field("Inglês", description="O idioma para realizar a tradução da transcrição")
+    uri: str = Field("gs://b_dub_videos/audio_original_video_mono_MVPDubVideos-Desenvolvimentofu.wav", description="URL de um áudio armazenado na GCP")
+    audio_language: str = Field("pt-BR", description="Idioma de origem do áudio")
+    translation_language: str = Field("en-US", description="O idioma para realizar a tradução da transcrição")
     class Config:
         protected_namespaces = ()  # Empty tuple to disable protection
 
