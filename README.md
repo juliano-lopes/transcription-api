@@ -17,8 +17,10 @@ Essa aplicação tem como objetivo realizar transcrição e tradução da transc
 * Será necessário instalar o docker para executar a aplicação em um container.
 * Na raiz do projeto, Crie a imagem por meio do Dockerfile:  
 **docker build -t dub_videos_transcription .**  
-* Após criar a imagem, execute o comando:  
-**docker run -it -p 5001:5001 -e GEMINI_API_KEY=SUA_CHAVE dub_videos_transcription**  
+* Após criar a imagem, certifique-se que uma rede foi criada para que este container e os containers das outras APIs possam se comunicar:
+**docker network create dub_videos_network**
+* Após criar a rede, execute o comando:  
+**docker run -it --network=dub_videos_network --hostname=dub_videos_transcription -e GEMINI_API_KEY=SUA_CHAVE -p 5001:5001 dub_videos_transcription**  
 * Observe que nesse caso a chave de API foi passada ao subir o container via docker. Substitua SUA_CHAVE pela chave de api correta.
 * A aplicação estará disponível pela porta local 5001
 * Abra o endereço:  
