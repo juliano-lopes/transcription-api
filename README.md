@@ -18,7 +18,8 @@ Essa aplicação tem como objetivo realizar transcrição e tradução da transc
 * Na raiz do projeto, Crie a imagem por meio do Dockerfile:  
 **docker build -t dub_videos_transcription .**  
 * Após criar a imagem, execute o comando:  
-**docker run -it -p 5001:5001 dub_videos_transcription**  
+**docker run -it -p 5001:5001 -e GEMINI_API_KEY=SUA_CHAVE dub_videos_transcription**  
+* Observe que nesse caso a chave de API foi passada ao subir o container via docker. Substitua SUA_CHAVE pela chave de api correta.
 * A aplicação estará disponível pela porta local 5001
 * Abra o endereço:  
 http://localhost:5001   
