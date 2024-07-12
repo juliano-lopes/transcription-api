@@ -1,4 +1,4 @@
-# API de transcrição e tradução para aplicação DubVideos
+# Componente 1 - API de transcrição e tradução para aplicação DubVideos
 * [Front-end Dub Videos](https://github.com/juliano-lopes/dub-videos-front-end)
 ## Como utilizar  
 Essa aplicação tem como objetivo realizar transcrição e tradução da transcrição dos áudios dos vídeos enviados. Para isso são utilizadas APIs da Google:
@@ -31,4 +31,4 @@ no navegador.
 * Acesse a URL http://localhost:5001  e escolha a documentação (Swagger). Após isso execute as rotas com os valores padrão de exemplo.
 
 ## Apresentação da Aplicação
-* [Assista a o vídeo de aprensentação da aplicação Dub Videos](https://youtu.be/tfAVGTcRtCA)
+* [Assista a o vídeo de aprensentação da aplicação Dub Videos](https://youtu.be/ISk4ukqWnfg)
