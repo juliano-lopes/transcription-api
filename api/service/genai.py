@@ -73,6 +73,7 @@ class GenAi:
     with open(name, "wb") as f:
       blob.download_to_file(f)
       file = self.upload_to_gemini(name, mime_type="audio/wav")
+      self.wait_for_files_active([file])
     json_data = '[{"time":"timestamp", "original_phrase":"...", "translated_phrase":"...", "voice_timbre":"..."}, {"time":"timestamp", "original_phrase":"...", "translated_phrase":"...", "voice_timbre":"..."}]'
     
     prompt = f"""
