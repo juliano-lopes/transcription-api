@@ -1,4 +1,6 @@
 # Componente 1 - API de transcrição e tradução para aplicação DubVideos
+**Para executar o projeto com mais facilidade, você pode também seguir as instruções contidas no repositório do [Projeto Dub Videos](https://github.com/juliano-lopes/dub-videos-project) para poder subir todos os componentes utilizando docker-compose**.  
+
 * [Front-end Dub Videos](https://github.com/juliano-lopes/dub-videos-front-end)
 ## Como utilizar  
 Essa aplicação tem como objetivo realizar transcrição e tradução da transcrição dos áudios dos vídeos enviados. Para isso são utilizadas APIs da Google:
